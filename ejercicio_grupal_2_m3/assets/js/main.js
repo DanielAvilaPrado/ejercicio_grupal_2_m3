@@ -13,7 +13,7 @@ let confirmaInfo = document.getElementById("confirmaInfo");
 let btnEnviar = document.querySelector(".btn-success");
 
 //variables necesarias pero que falta agregar el valor
-var edad = "";
+// var edad = "";
 var rangoEtario = "";
 var tiempoTrabajado = "";
 
@@ -21,13 +21,77 @@ var tiempoTrabajado = "";
 
 //Calular edad
 
-window.addEventListener("load", function () {
+function calcularEdad() {
+    var fechaNac = new Date(Date.parse(document.getElementById("fechaNacimiento").value.split("/").reverse().join("-")));
+    var fechaActual = new Date();
+    var edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+    var mes = fechaActual.getMonth() - fechaNac.getMonth();
+    if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNac.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
 
-    fechaNacimiento.addEventListener("change", function () {
-        console.log(this.value)        
+  window.addEventListener("load", function () {
+
+    btnEnviar.addEventListener("click", function () {
+        if (fechaNacimiento.value){
+            alert(`La edad es: ${calcularEdad(fechaNacimiento.value)} años`)                                      
+
+        }
+           
     })
     
 })
+  
+
+  
+
+
+
+
+
+
+// esta wea funciona pero apenas :c
+
+// const sacarEdad = (fechaNacimiento) => {
+//     const fechaHoy = new Date();
+//     const anio = parseInt(fechaHoy.getFullYear());
+//     const mes = parseInt(fechaHoy.getMonth()) + 1;
+//     const dia = parseInt(fechaHoy.getDate());
+
+//     const anioNacimiento = parseInt(String(fechaNacimiento).substring(0, 4));
+//     const mesNacimiento = parseInt(String(fechaNacimiento).substring(5, 7));
+//     const diaNacimiento = parseInt(String(fechaNacimiento).substring(8, 10));
+
+//     let edad = anio - anioNacimiento;
+//     if (mes < mesNacimiento){
+//         edad--;
+//     } else if (mes === mesNacimiento){
+//         if (dia < diaNacimiento) {
+//             edad--;
+//         }
+//     }
+//     // console.log(edad)
+
+//     return edad;
+// }
+
+// // let anios = sacarEdad;
+
+// window.addEventListener("load", function () {
+
+//     fechaNacimiento.addEventListener("change", function () {
+//         if (this.value){
+//             alert(`La edad es: ${sacarEdad(this.value)} años`)                                      
+
+//         }
+           
+//     })
+    
+// })
+// lkassssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
 
 
 //calcular rango etario
