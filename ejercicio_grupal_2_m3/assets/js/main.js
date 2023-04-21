@@ -21,6 +21,15 @@ var tiempoTrabajado = "";
 
 //Calular edad
 
+window.addEventListener("load", function () {
+
+    fechaNacimiento.addEventListener("change", function () {
+        console.log(this.value)        
+    })
+    
+})
+
+
 //calcular rango etario
 
 //calular tiempo trabajado
