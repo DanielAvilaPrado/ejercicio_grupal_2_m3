@@ -22,10 +22,10 @@ var tiempoTrabajado = "";
 //Calular edad
 
 function calcularEdad() {
-    var fechaNac = new Date(Date.parse(document.getElementById("fechaNacimiento").value.split("/").reverse().join("-")));
-    var fechaActual = new Date();
-    var edad = fechaActual.getFullYear() - fechaNac.getFullYear();
-    var mes = fechaActual.getMonth() - fechaNac.getMonth();
+    let fechaNac = new Date(Date.parse(document.getElementById("fechaNacimiento").value.split("/").reverse().join("-")));
+    let fechaActual = new Date();
+    let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+    let mes = fechaActual.getMonth() - fechaNac.getMonth();
     if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNac.getDate())) {
       edad--;
     }
@@ -44,53 +44,6 @@ function calcularEdad() {
     
 })
   
-
-  
-
-
-
-
-
-
-// esta wea funciona pero apenas :c
-
-// const sacarEdad = (fechaNacimiento) => {
-//     const fechaHoy = new Date();
-//     const anio = parseInt(fechaHoy.getFullYear());
-//     const mes = parseInt(fechaHoy.getMonth()) + 1;
-//     const dia = parseInt(fechaHoy.getDate());
-
-//     const anioNacimiento = parseInt(String(fechaNacimiento).substring(0, 4));
-//     const mesNacimiento = parseInt(String(fechaNacimiento).substring(5, 7));
-//     const diaNacimiento = parseInt(String(fechaNacimiento).substring(8, 10));
-
-//     let edad = anio - anioNacimiento;
-//     if (mes < mesNacimiento){
-//         edad--;
-//     } else if (mes === mesNacimiento){
-//         if (dia < diaNacimiento) {
-//             edad--;
-//         }
-//     }
-//     // console.log(edad)
-
-//     return edad;
-// }
-
-// // let anios = sacarEdad;
-
-// window.addEventListener("load", function () {
-
-//     fechaNacimiento.addEventListener("change", function () {
-//         if (this.value){
-//             alert(`La edad es: ${sacarEdad(this.value)} años`)                                      
-
-//         }
-           
-//     })
-    
-// })
-// lkassssssssssssssssssssssssssssssssssssssssssssssssssssssss
 
 
 
