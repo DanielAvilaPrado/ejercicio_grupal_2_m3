@@ -16,114 +16,110 @@
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 
-<body class="container">
-
+<body>
     <header>
         <h1>Sistema de Gestión del Talento Humano (GTH)</h1>
     </header>
 
-    <main>
+    <main class="container">
         <!-- Inicio del formulario -->
         <section>
-            <form class="row g-3 needs-validation" novalidate="">
+            <form class="row g-3">
                 <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Nombre y Apellido</label>
-                    <input type="text" class="form-control" id="nombre" required="">
-                    <div class="valid-feedback">
-                        Ingrese su primer nombre y primer apellido
+                    <label class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                    <div id="NO-name" class="NO">
+                        Debes ingresar un nomre
                     </div>
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom02" class="form-label">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="fechaNacimiento" required>
-                    <div class="valid-feedback" id="edad">
-                        <!-- Looks good! -->
+                    <div id="NO-nacimiento" class="NO">
+                        Debes ingresar un nomre
                     </div>
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom04" class="form-label">Carga Familiar</label>
-                    <select class="form-select" id="cargaFamiliar" required="">
+                    <select class="form-select" id="cargaFamiliar" required>
                         <option selected="" disabled="" value="">Seleccione una opción</option>
                         <option>Sí</option>
                         <option>No</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a valid state.
+                    <div id="NO-carga" class="NO">
+                        Debes ingresar un nomre
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom04" class="form-label">Trabajador activo</label>
-                    <select class="form-select" id="trabajadorActivo" required="">
+                    <select class="form-select" id="trabajadorActivo" required>
                         <option selected="" disabled="" value="">Seleccione una opción</option>
                         <option>Sí</option>
                         <option>No</option>
                     </select>
-                    <div class="invalid-feedback">
-                        Please select a valid state.
+                    <div id="NO-activo" class="NO">
+                        Debes ingresar un nomre
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label for="validationCustom02" class="form-label">Mes y año de ingreso</label>
-                    <input type="month" class="form-control" id="fechaIngreso" min="1900-04" required="">
-                    <div class="valid-feedback">
-                        Looks good!
+                    <label for="validationCustom02" class="form-label">Fecha de ingreso</label>
+                    <input type="date" class="form-control" id="fechaIngreso" required>
+                    <div id="NO-ingreso" class="NO">
+                        Debes ingresar un nomre
                     </div>
                 </div>
                 </div>
                 <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="confirmaInfo" required="">
+                        <input class="form-check-input" type="checkbox" id="confirmaInfo" required>
                         <label class="form-check-label" for="invalidCheck">
                             Toda la información proporcionada es verídica y completa
                         </label>
-                        <div class="invalid-feedback">
-                            You must agree before submitting.
-                        </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <button class="btn btn-success" type="submit">Enviar</button>
                 </div>
             </form>
         </section>
+        <div class="col-12">
+            <button class="btn btn-success" onclick="chequearCampos()">Enviar</input>
+        </div>
         <!-- fin del formulario -->
 
+        <div id="mensaje" class="col-12 py-5">
+            Datos de persona ingresada
+        </div>
         <!-- Inicio de la tabla -->
         <section class="row">
-            <div id="tabla" class="col-12">
+            <div class="col-12">
                 <h2 class="text-center">Tabla</h2>
-                <table class="table table-light table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">Número</th>
-                            <th scope="col" class="text-center">Nombre y Apellido</th>
-                            <th scope="col" class="text-center">Fecha de Nacimiento</th>
-                            <th scope="col" class="text-center">Edad</th>
-                            <th scope="col" class="text-center">Rango Etario</th>
-                            <th scope="col" class="text-center">Carga Familiar</th>
-                            <th scope="col" class="text-center">Trabajador Activo</th>
-                            <th scope="col" class="text-center">Fecha Ingreso</th>
-                            <th scope="col" class="text-center">Tiempo trabajado</th>
-                        </tr>
-                    </thead>
+                <table id="tabla" class="table table-light table-bordered">
+                    <tr>
+                        <th class="text-center">Registro</th>
+                        <th class="text-center">Nombre y Apellido</th>
+                        <th class="text-center">Fecha de Nacimiento</th>
+                        <th class="text-center">Edad</th>
+                        <th class="text-center">Rango Etario</th>
+                        <th class="text-center">Carga Familiar</th>
+                        <th class="text-center">Trabajador Activo</th>
+                        <th class="text-center">Fecha Ingreso</th>
+                        <th class="text-center">Tiempo trabajado</th>
+                    </tr>
                 </table>
             </div>
         </section>
         <!-- fin de la tabla -->
     </main>
-
-    <footer>
-        <hr>
-        <ul>
-            <li>Michael Araya</li>
-            <li>Daniel Ávila</li>
-            <li>Claudio Illanes</li>
-            <li>Gonzalo Meneses</li>
-            <li>Ignacio Valderrama</li>
-        </ul>
-        <hr>
+    <footer class="row">
+        <div class="row">
+            <h3>Integrantes</h3>
+        </div>
+        <div class="row">
+            <p class="col"> Michael Araya </p>
+            <p class="col"> Daniel Ávila </p>
+            <p class="col"> Claudio Illanes </p>
+            <p class="col"> Gonzalo Meneses </p>
+            <p class="col"> Ignacio Valderrama </p>
+        </div>
     </footer>
-
     <script src="./assets/js/main.js"></script>
 </body>
 
