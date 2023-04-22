@@ -16,16 +16,41 @@ let mensaje = document.getElementById("mensaje");
 
 const fila = tabla.insertRow();
 
-//variables necesarias pero que falta agregar el valor
+//variables necesarias pero que falta agregar el 
 var edad;
 var rangoEtario;
 var aniosTrabajo;
 var mesesTrabajo;
 
-
 //Se requiere un mensaje para los trabajadores activos que indique la cantidad de meses que faltan para completar el año (siguiente) de permanencia en la organización.
 
 //Calular edad
+
+function calcularEdad() {
+    let fechaNac = new Date(Date.parse(document.getElementById("fechaNacimiento").value.split("/").reverse().join("-")));
+    let fechaActual = new Date();
+    let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+    let mes = fechaActual.getMonth() - fechaNac.getMonth();
+    if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNac.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
+
+  window.addEventListener("load", function () {
+
+    btnEnviar.addEventListener("click", function () {
+        if (fechaNacimiento.value){
+            alert(`La edad es: ${calcularEdad(fechaNacimiento.value)} años`)                                      
+
+        }
+           
+    })
+    
+})
+  
+
+
 
 //calcular rango etario
 
