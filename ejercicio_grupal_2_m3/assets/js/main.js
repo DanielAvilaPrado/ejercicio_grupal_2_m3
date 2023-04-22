@@ -7,7 +7,8 @@ var numeroRegistro = 1;
 //captura de input de los campos del formulario
 let nombre = document.getElementById("nombre");
 
-let fechaActual = new Date();
+const fechaActual = new Date();
+var nacimiento = new Date();
 
 let cargaFam = document.getElementById("cargaFamiliar");
 let trabajadorAct = document.getElementById("trabajadorActivo");
@@ -24,34 +25,8 @@ var mesesTrabajo;
 
 //Se requiere un mensaje para los trabajadores activos que indique la cantidad de meses que faltan para completar el año (siguiente) de permanencia en la organización.
 
-//Calular edad
-
-function calcularEdad() {
-    let fechaNac = new Date(Date.parse(document.getElementById("fechaNacimiento").value.split("/").reverse().join("-")));
-    let fechaActual = new Date();
-    let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
-    let mes = fechaActual.getMonth() - fechaNac.getMonth();
-    if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNac.getDate())) {
-      edad--;
-    }
-    return edad;
-  }
-
-  window.addEventListener("load", function () {
-
-    btnEnviar.addEventListener("click", function () {
-        if (fechaNacimiento.value){
-            alert(`La edad es: ${calcularEdad(fechaNacimiento.value)} años`)                                      
-
-        }
-           
-    })
-    
-})
+//Calcular edad
   
-
-
-
 //calcular rango etario
 
 //calular tiempo trabajado
@@ -65,16 +40,8 @@ function calcularEdad() {
 
 function ejecutar(){
 
-
     //Calcular Edad
-    let nacimiento = new Date(document.getElementById("fechaNacimiento").value);
-    edad = fechaActual.getFullYear() - nacimiento.getFullYear()
-    if(nacimiento.getMonth() == fechaActual.getMonth()){
-        if(nacimiento.getDate() == fechaActual.getDate())
-            edad --;
-    }
-    else if (nacimiento.getMonth() > fechaActual.getMonth())
-        edad --;
+    calcular_edad();
     
     let textoNacimiento = `${nacimiento.getDate()}/${nacimiento.getMonth()}/${nacimiento.getFullYear()}`
 
@@ -91,6 +58,7 @@ function ejecutar(){
     }
     else
         mesesTrabajo = fechaActual.getMonth() - ingreso.getMonth()
+
 
     let = textotrabajado = `${aniosTrabajo} años y ${mesesTrabajo} meses`
 
@@ -121,4 +89,17 @@ function chequearCampos(){
 
     // if(todolleno == true)
         ejecutar()
+}
+
+function calcular_edad(){
+    nacimiento = new Date(document.getElementById("fechaNacimiento").value);
+    
+    edad = fechaActual.getFullYear() - nacimiento.getFullYear()
+    if(nacimiento.getMonth() == fechaActual.getMonth()){
+        if(nacimiento.getDate() <= fechaActual.getDate())
+            edad --;
+    }
+    else if (nacimiento.getMonth() > fechaActual.getMonth())
+        edad --;
+
 }
