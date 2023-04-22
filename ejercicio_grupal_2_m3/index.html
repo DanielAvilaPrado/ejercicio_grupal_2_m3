@@ -25,62 +25,63 @@
         <!-- Inicio del formulario -->
         <section>
             <form class="row g-3">
-                <div class="col-md-4">
-                    <label class="form-label">Nombre y Apellido</label>
-                    <input type="text" class="form-control" id="nombre" required>
-                    <div id="NO-name" class="NO">
-                        Debes ingresar un nomre
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" >
+                        <div id="NO-name" class="NO">
+                            Debes ingresar un Nombre
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom02" class="form-label">Fecha de Nacimiento</label>
+                        <input type="datetime-local" class="form-control" id="fechaNacimiento">
+                        <div id="NO-nacimiento" class="NO">
+                            Debes ingresar una Fecha
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom04" class="form-label">Trabajador activo</label>
+                        <select class="form-select" id="trabajadorActivo" >
+                            <option selected="" disabled="" value="">Seleccione una opción</option>
+                            <option>Sí</option>
+                            <option>No</option>
+                        </select>
+                        <div id="NO-activo" class="NO">
+                            Este campo es obligatorio
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="fechaNacimiento" required>
-                    <div id="NO-nacimiento" class="NO">
-                        Debes ingresar un nomre
+                <div id="trabajadorserio" class="row">
+                    <div class="col-md-6">
+                        <label for="validationCustom04" class="form-label">Carga Familiar</label>
+                        <select class="form-select" id="cargaFamiliar" >
+                            <option selected="" disabled="" value="">Seleccione una opción</option>
+                            <option>Sí</option>
+                            <option>No</option>
+                        </select>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationCustom04" class="form-label">Carga Familiar</label>
-                    <select class="form-select" id="cargaFamiliar" required>
-                        <option selected="" disabled="" value="">Seleccione una opción</option>
-                        <option>Sí</option>
-                        <option>No</option>
-                    </select>
-                    <div id="NO-carga" class="NO">
-                        Debes ingresar un nomre
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Fecha de ingreso</label>
+                        <input type="datetime-local" class="form-control" id="fechaIngreso">
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="validationCustom04" class="form-label">Trabajador activo</label>
-                    <select class="form-select" id="trabajadorActivo" required>
-                        <option selected="" disabled="" value="">Seleccione una opción</option>
-                        <option>Sí</option>
-                        <option>No</option>
-                    </select>
-                    <div id="NO-activo" class="NO">
-                        Debes ingresar un nomre
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="validationCustom02" class="form-label">Fecha de ingreso</label>
-                    <input type="date" class="form-control" id="fechaIngreso" required>
-                    <div id="NO-ingreso" class="NO">
-                        Debes ingresar un nomre
-                    </div>
-                </div>
-                </div>
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="confirmaInfo" required>
-                        <label class="form-check-label" for="invalidCheck">
-                            Toda la información proporcionada es verídica y completa
-                        </label>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="confirmaInfo" >
+                            <label class="form-check-label" for="invalidCheck">
+                                Toda la información proporcionada es verídica y completa
+                            </label>
+                            <div id="NO-check" class="NO">
+                                Debes confirmar acá
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
         </section>
         <div class="col-12">
-            <button class="btn btn-success" onclick="chequearCampos()">Enviar</input>
+            <button class="btn btn-success" onclick="ejecutar()">Enviar</input>
         </div>
         <!-- fin del formulario -->
 
@@ -94,7 +95,7 @@
                 <table id="tabla" class="table table-light table-bordered">
                     <tr>
                         <th class="text-center">Registro</th>
-                        <th class="text-center">Nombre y Apellido</th>
+                        <th class="text-center">Nombre</th>
                         <th class="text-center">Fecha de Nacimiento</th>
                         <th class="text-center">Edad</th>
                         <th class="text-center">Rango Etario</th>

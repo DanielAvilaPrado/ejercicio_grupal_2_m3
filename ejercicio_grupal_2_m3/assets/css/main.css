@@ -22,6 +22,13 @@ footer{
     background-color: #161616;
     text-align: center;
 }
-#NO-name, #NO-nacimiento, #NO-carga, #NO-activo, #NO-ingreso{
+#NO-name, #NO-nacimiento, #NO-carga, #NO-activo, #NO-ingreso, #NO-check{
     display: none;
+}
+#trabajadorserio{
+    margin-top: 30px;
+    display: none;
+}
+button{
+    margin-top: 40px;
 }

@@ -1,14 +1,10 @@
 var numeroRegistro = 1;
 //Se debe validar que al ingresar el año de nacimiento o el año de ingreso a la organización no sea mayor al año actual.
 
-//Se debe validar que los meses estén comprendidos entre 1 y 12
-
-
 //captura de input de los campos del formulario
 let nombre = document.getElementById("nombre");
 
 const fechaActual = new Date();
-var nacimiento = new Date();
 
 let cargaFam = document.getElementById("cargaFamiliar");
 let trabajadorAct = document.getElementById("trabajadorActivo");
@@ -23,15 +19,17 @@ var rangoEtario;
 var aniosTrabajo;
 var mesesTrabajo;
 
+
+
+document.getElementById("trabajadorActivo").addEventListener("input", showDiv)
+
+function showDiv(){
+    if(document.querySelector("#trabajadorActivo").value == "Sí")
+        document.querySelector("#trabajadorserio").style = "display: flex"
+        else document.querySelector("#trabajadorserio").style = "display: none"
+}
+
 //Se requiere un mensaje para los trabajadores activos que indique la cantidad de meses que faltan para completar el año (siguiente) de permanencia en la organización.
-
-//Calcular edad
-  
-//calcular rango etario
-
-//calular tiempo trabajado
-
-//crear arreglo vacío y agregar datos con push
 
 //agregar datos a la tabla con ciclo
 
@@ -39,84 +37,79 @@ var mesesTrabajo;
 
 
 function ejecutar(){
-
-    //Calcular Edad
-    calcular_edad();
-    
-    // Versión inicial de formateo de fecha 
-    // let textoNacimiento = `${nacimiento.getDate()}/${nacimiento.getMonth()}/${nacimiento.getFullYear()}`
-    
-    let textoNacimiento = nacimiento.toLocaleDateString('es-ES');
-    console.log(textoNacimiento);
-    console.log(nacimiento.toLocaleDateString('es-ES'));
-    edad < 2 ? rangoEtario = "Infante": edad <12 ? rangoEtario = "Niño" : edad < 18 ? rangoEtario = "Adolescente" : edad < 65 ? rangoEtario = "Adulto" : edad < 85 ? rangoEtario = "Adulto Mayor" : rangoEtario = "Años dorados"
-
-    //Calcular tiempo de ingreso
-
-    let ingreso = new Date(fechaIng.value);
-
-    aniosTrabajo = fechaActual.getFullYear() - ingreso.getFullYear();
-
-    if(ingreso.getMonth() > fechaActual.getMonth()){
-        aniosTrabajo--;
-        mesesTrabajo = fechaActual.getMonth()+12 - ingreso.getMonth()
-    }
-    else
-        mesesTrabajo = fechaActual.getMonth() - ingreso.getMonth()
-
-
-    let textotrabajado = `${aniosTrabajo} años y ${mesesTrabajo} meses`
-
-    const tabla = document.getElementById("tabla");
-    const fila = tabla.insertRow();
-
-    fila.insertCell(0).textContent = numeroRegistro;
-    fila.insertCell(1).textContent = nombre.value;
-    fila.insertCell(2).textContent = textoNacimiento;
-    fila.insertCell(3).textContent = edad;
-    fila.insertCell(4).textContent = rangoEtario;
-    fila.insertCell(5).textContent = cargaFam.value;
-    fila.insertCell(6).textContent = trabajadorAct.value;
-    fila.insertCell(7).textContent = ingreso;
-    fila.insertCell(8).textContent = textotrabajado;
-
-    mensaje.innerHTML = `Tu nombre es ${nombre.value} y tienes ${edad} años`;
-    numeroRegistro++;
-    
-}
-
-
-function calcular_edad(){
     nacimiento = new Date(document.getElementById("fechaNacimiento").value);
+    confirmaInfo = document.getElementById("confirmaInfo").checked;
+
     
-    edad = fechaActual.getFullYear() - nacimiento.getFullYear()
-    if(nacimiento.getMonth() == fechaActual.getMonth()){
-        if(nacimiento.getDate() <= fechaActual.getDate())
-            edad --;
-    }
-    else if (nacimiento.getMonth() > fechaActual.getMonth())
-        edad --;
-}
-
-
-
-
-function chequearCampos(){
-    let todolleno = false;
+    let todoOK = true;
     let NOname = document.getElementById("NO-name")
-    let Nonacimiento = document.getElementById("NO-nacimiento")
-    let Nocarga = document.getElementById("NO-carga")
-    let Noactivo = document.getElementById("NO-activo")
-    let Noingreso = document.getElementById("NO-ingreso")
+    let Nodate = document.getElementById("NO-nacimiento")
+    let NOactive = document.getElementById("NO-activo")
+    let NOcheck = document.getElementById("NO-check")
 
-    //nacimiento = new Date(document.getElementById("fechaNacimiento").value)
+    nombre.value == "" ? (NOname.style = "display: block;", todoOK = false) : NOname.style = "display: none;"
+    trabajadorAct.value != "Sí" && trabajadorAct.value != "No" ? (NOactive.style = "display: block;", todoOK = false): NOactive.style = "display: none;"
+    isNaN(nacimiento.getTime()) ? (Nodate.style = "display: block;", todoOK = false) : Nodate.style = "display: none;"
+    !confirmaInfo ? (NOcheck.style = "display: block;", todoOK = false) : NOcheck.style = "display: none;"
     
-    nombre.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
-    //nacimiento.value.length <5 ? Nonacimiento.style = "display: block;" : (Nonacimiento.style = "display: none;" , todolleno = true)
+    if(todoOK && confirmaInfo){
+        // obtenemos la información del formulario
+        nacimiento = new Date(document.getElementById("fechaNacimiento").value);
+        // dato ingresado en tabla "fecha de nacimiento"
+        let fechanac = `${nacimiento.getDate()}/${nacimiento.getMonth()+1}/${nacimiento.getFullYear()}`
 
-    if(nacimiento.length <9)
-        console.log("bvlas")
-    //nacimiento.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
+        // cálculo de la edad
+        edad = fechaActual.getFullYear() - nacimiento.getFullYear()
+        if(nacimiento.getMonth() == fechaActual.getMonth()){ //su se cumple esta condición
+            if(nacimiento.getDate() > fechaActual.getDate()) //y además se cumple esta condición
+                edad --;  //resta 1 año
+        }
+        else if (nacimiento.getMonth() > fechaActual.getMonth())
+            edad --;
 
-    ejecutar();
+            
+        //Calcular fecha de ingreso
+        let ingreso = new Date(fechaIng.value);
+        aniosTrabajo = fechaActual.getFullYear() - ingreso.getFullYear();
+
+        let fechaIngresoFinal = `${ingreso.getDate()}/${ingreso.getMonth()+1}/${ingreso.getFullYear()}`
+
+        if (ingreso.getMonth() > fechaActual.getMonth()){
+            aniosTrabajo--;
+            mesesTrabajo = fechaActual.getMonth()+12 - ingreso.getMonth()   
+        }
+        else
+            mesesTrabajo = fechaActual.getMonth() - ingreso.getMonth()
+
+
+        let textotrabajado = `${aniosTrabajo} años y ${mesesTrabajo} meses`
+
+        const tabla = document.getElementById("tabla");
+        const fila = tabla.insertRow();
+
+        if(trabajadorAct.value == "No"){
+            cargaFam.value = "No"
+            fechaIngresoFinal = ""
+            textotrabajado = ""
+        }
+
+            console.log(trabajadorAct.value);
+        //Calcular Rango Etario
+        let rangoEtario;
+        edad < 2 ? rangoEtario = "Infante": edad <12 ? rangoEtario = "Niño" : edad < 18 ? rangoEtario = "Adolescente" : edad < 65 ? rangoEtario = "Adulto" : edad < 85 ? rangoEtario = "Adulto Mayor" : rangoEtario = "Años dorados"
+
+        mensaje.innerHTML = `El nombre es ${nombre.value}, tiene ${edad} años, siendo ${rangoEtario}`
+
+        fila.insertCell(0).textContent = numeroRegistro; //funcionando
+        fila.insertCell(1).textContent = nombre.value; //funcionando
+        fila.insertCell(2).textContent = fechanac; //funcionando
+        fila.insertCell(3).textContent = edad; //funcionando
+        fila.insertCell(4).textContent = rangoEtario; //funcionando
+        fila.insertCell(5).textContent = cargaFam.value; //funcionando
+        fila.insertCell(6).textContent = trabajadorAct.value; //funcionando
+        fila.insertCell(7).textContent = fechaIngresoFinal; //funcionando
+        fila.insertCell(8).textContent = textotrabajado; //funcionando
+
+        numeroRegistro++;
+    }
 }
