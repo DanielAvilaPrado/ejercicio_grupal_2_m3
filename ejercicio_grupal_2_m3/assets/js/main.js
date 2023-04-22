@@ -43,7 +43,10 @@ function ejecutar(){
     //Calcular Edad
     calcular_edad();
     
-    let textoNacimiento = `${nacimiento.getDate()}/${nacimiento.getMonth()}/${nacimiento.getFullYear()}`
+    // Versión inicial de formateo de fecha 
+    // let textoNacimiento = `${nacimiento.getDate()}/${nacimiento.getMonth()}/${nacimiento.getFullYear()}`
+    
+    let textoNacimiento = nacimiento.toLocaleDateString('es-ES');
     console.log(textoNacimiento);
     console.log(nacimiento.toLocaleDateString('es-ES'));
     edad < 2 ? rangoEtario = "Infante": edad <12 ? rangoEtario = "Niño" : edad < 18 ? rangoEtario = "Adolescente" : edad < 65 ? rangoEtario = "Adulto" : edad < 85 ? rangoEtario = "Adulto Mayor" : rangoEtario = "Años dorados"
@@ -51,6 +54,7 @@ function ejecutar(){
     //Calcular tiempo de ingreso
 
     let ingreso = new Date(fechaIng.value);
+
     aniosTrabajo = fechaActual.getFullYear() - ingreso.getFullYear();
 
     if(ingreso.getMonth() > fechaActual.getMonth()){
@@ -61,7 +65,7 @@ function ejecutar(){
         mesesTrabajo = fechaActual.getMonth() - ingreso.getMonth()
 
 
-    let = textotrabajado = `${aniosTrabajo} años y ${mesesTrabajo} meses`
+    let textotrabajado = `${aniosTrabajo} años y ${mesesTrabajo} meses`
 
     const tabla = document.getElementById("tabla");
     const fila = tabla.insertRow();
@@ -73,7 +77,7 @@ function ejecutar(){
     fila.insertCell(4).textContent = rangoEtario;
     fila.insertCell(5).textContent = cargaFam.value;
     fila.insertCell(6).textContent = trabajadorAct.value;
-    fila.insertCell(7).textContent = "";
+    fila.insertCell(7).textContent = ingreso;
     fila.insertCell(8).textContent = textotrabajado;
 
     mensaje.innerHTML = `Tu nombre es ${nombre.value} y tienes ${edad} años`;
@@ -81,16 +85,6 @@ function ejecutar(){
     
 }
 
-function chequearCampos(){
-    // let todolleno = false;
-    // let NOname = document.getElementById("NO-name")
-    // nombre.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
-
-    //if(document.querySelector("#confirmaInfo").checked)
-
-    // if(todolleno == true)
-        ejecutar()
-}
 
 function calcular_edad(){
     nacimiento = new Date(document.getElementById("fechaNacimiento").value);
@@ -102,5 +96,27 @@ function calcular_edad(){
     }
     else if (nacimiento.getMonth() > fechaActual.getMonth())
         edad --;
+}
 
+
+
+
+function chequearCampos(){
+    let todolleno = false;
+    let NOname = document.getElementById("NO-name")
+    let Nonacimiento = document.getElementById("NO-nacimiento")
+    let Nocarga = document.getElementById("NO-carga")
+    let Noactivo = document.getElementById("NO-activo")
+    let Noingreso = document.getElementById("NO-ingreso")
+
+    //nacimiento = new Date(document.getElementById("fechaNacimiento").value)
+    
+    nombre.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
+    //nacimiento.value.length <5 ? Nonacimiento.style = "display: block;" : (Nonacimiento.style = "display: none;" , todolleno = true)
+
+    if(nacimiento.length <9)
+        console.log("bvlas")
+    //nacimiento.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
+
+    ejecutar();
 }
