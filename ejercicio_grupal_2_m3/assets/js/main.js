@@ -4,13 +4,13 @@
 
 
 //captura de input de los campos del formulario
-let nombre = document.getElementById("nombre").value;
-let fechaNac = document.getElementById("fechaNacimiento").value;
-let cargaFam = document.getElementById("cargaFamiliar").value;
-let trabajadorAct = document.getElementById("trabajadorActivo").value;
-let fechaIng = document.getElementById("fechaIngreso").value;
-let confirmaInfo = document.getElementById("confirmaInfo");
-let btnEnviar = document.querySelector(".btn-success");
+// let nombre = document.getElementById("nombre").value;
+// let fechaNac = document.getElementById("fechaNacimiento").value;
+// let cargaFam = document.getElementById("cargaFamiliar").value;
+// let trabajadorAct = document.getElementById("trabajadorActivo").value;
+// let fechaIng = document.getElementById("fechaIngreso").value;
+// let confirmaInfo = document.getElementById("confirmaInfo");
+// let btnEnviar = document.querySelector(".btn-success");
 
 //variables necesarias pero que falta agregar el valor
 // var edad = "";
@@ -32,18 +32,41 @@ function calcularEdad() {
     return edad;
   }
 
+function ingresarFila(){
+
+  let nombre = document.getElementById("nombre").value;
+  let fechaNac = document.getElementById("fechaNacimiento").value;
+  let cargaFam = document.getElementById("cargaFamiliar").value;
+  let trabajadorAct = document.getElementById("trabajadorActivo").value;
+  let fechaIng = document.getElementById("fechaIngreso").value;
+  // let confirmaInfo = document.getElementById("confirmaInfo");
+  // let btnEnviar = document.querySelector(".btn-success");
+
+var fila="<tr><td>"
+          +nombre+"</td><td>"
+          +fechaNac+"</td><td>"
+          +edad+"</td><td>"
+          +rangoEtario+"</td><td>"
+          +cargaFam+"</td><td>"
+          +trabajadorAct+"</td><td>"
+          +fechaIng+"</td><td>"
+          +tiempoTrabajado+"</td></tr>";
+
+    document.getElementById("tablita").innerHTML = fila;
+}
+console.log(ingresarFila());
   window.addEventListener("load", function () {
 
-    btnEnviar.addEventListener("click", function () {
-        if (fechaNacimiento.value){
-            alert(`La edad es: ${calcularEdad(fechaNacimiento.value)} años`)                                      
+    // btnEnviar.addEventListener("click", function () {
+    //     // if (fechaNacimiento.value){
+    //     //     alert(`La edad es: ${calcularEdad(fechaNacimiento.value)} años`)   
+                                       
 
-        }
-           
-    })
+    //     // }
+    //     document.getElementById("tablita").innerHTML = fila;     
+    // })
     
 })
-  
 
 
 

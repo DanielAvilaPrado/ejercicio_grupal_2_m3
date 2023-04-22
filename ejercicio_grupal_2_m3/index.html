@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-success" type="submit">Enviar</button>
+                    <button class="btn btn-success" onclick="ingresarFila()" type="submit">Enviar</button>
                 </div>
             </form>
         </section>
@@ -95,7 +95,7 @@
                 <table class="table table-light table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">Número</th>
+                            <!-- <th scope="col" class="text-center">Número</th> -->
                             <th scope="col" class="text-center">Nombre y Apellido</th>
                             <th scope="col" class="text-center">Fecha de Nacimiento</th>
                             <th scope="col" class="text-center">Edad</th>
@@ -106,6 +106,9 @@
                             <th scope="col" class="text-center">Tiempo trabajado</th>
                         </tr>
                     </thead>
+                    <tbody id="tablita">
+
+                    </tbody>
                 </table>
             </div>
         </section>
