@@ -44,7 +44,8 @@ function ejecutar(){
     calcular_edad();
     
     let textoNacimiento = `${nacimiento.getDate()}/${nacimiento.getMonth()}/${nacimiento.getFullYear()}`
-
+    console.log(textoNacimiento);
+    console.log(nacimiento.toLocaleDateString('es-ES'));
     edad < 2 ? rangoEtario = "Infante": edad <12 ? rangoEtario = "Niño" : edad < 18 ? rangoEtario = "Adolescente" : edad < 65 ? rangoEtario = "Adulto" : edad < 85 ? rangoEtario = "Adulto Mayor" : rangoEtario = "Años dorados"
 
     //Calcular tiempo de ingreso
