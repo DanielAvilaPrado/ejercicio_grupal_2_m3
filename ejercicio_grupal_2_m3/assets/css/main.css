@@ -4,3 +4,24 @@ body {
     background-size: 100%;
     color: aliceblue;
 }
+
+header{
+    padding-top: 30px;
+    text-align: center;
+}
+.NO{
+    color: red;
+}
+main{
+    margin-top: 50px;
+}
+
+footer{
+    padding: 10px 0;
+    width: 100%;
+    background-color: #161616;
+    text-align: center;
+}
+#NO-name, #NO-nacimiento, #NO-carga, #NO-activo, #NO-ingreso{
+    display: none;
+}
