@@ -81,19 +81,29 @@ function ejecutar(){
 }
 
 function chequearCampos(){
-    // let todolleno = false;
-    // let NOname = document.getElementById("NO-name")
-    // nombre.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
+    let todolleno = false;
+    let NOname = document.getElementById("NO-name")
+    let Nonacimiento = document.getElementById("NO-nacimiento")
+    let Nocarga = document.getElementById("NO-carga")
+    let Noactivo = document.getElementById("NO-activo")
+    let Noingreso = document.getElementById("NO-ingreso")
+    
+    nombre.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
+    nacimiento.value.length <9 ? Nonacimiento.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
 
-    //if(document.querySelector("#confirmaInfo").checked)
 
-    // if(todolleno == true)
+    if(document.querySelector("#fechaNacimiento").value.length <9)
+
+    alert();
+    //nacimiento.value == "" ? NOname.style = "display: block;" : (NOname.style = "display: none;" , todolleno = true)
+
+    if(todolleno == true)
         ejecutar()
 }
 
 function calcular_edad(){
     nacimiento = new Date(document.getElementById("fechaNacimiento").value);
-    
+
     edad = fechaActual.getFullYear() - nacimiento.getFullYear()
     if(nacimiento.getMonth() == fechaActual.getMonth()){
         if(nacimiento.getDate() <= fechaActual.getDate())
@@ -101,5 +111,4 @@ function calcular_edad(){
     }
     else if (nacimiento.getMonth() > fechaActual.getMonth())
         edad --;
-
 }
