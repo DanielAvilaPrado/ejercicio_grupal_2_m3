@@ -54,7 +54,7 @@
                 </div>
                 <div id="trabajadorserio" class="row">
                     <div class="col-md-6">
-                        <label for="validationCustom04" class="form-label">Carga Familiar</label>
+                        <label for="validationCustom04" class="form-label">Tiene Carga Familiar</label>
                         <select class="form-select" id="cargaFamiliar" >
                             <option selected="" disabled="" value="">Seleccione una opción</option>
                             <option>Sí</option>
@@ -64,6 +64,9 @@
                     <div class="col-md-6">
                         <label for="validationCustom02" class="form-label">Fecha de ingreso</label>
                         <input type="datetime-local" class="form-control" id="fechaIngreso">
+                        <div id="NO-ingreso" class="NO">
+                            Debes ingresar una fecha de ingreso
+                        </div>
                     </div>
                     </div>
                     <div class="col-12">
@@ -81,7 +84,7 @@
             </form>
         </section>
         <div class="col-12">
-            <button class="btn btn-success" onclick="ejecutar()">Enviar</input>
+            <button class="btn btn-success" onclick="comprobarDatos()">Enviar</input>
         </div>
         <!-- fin del formulario -->
 
